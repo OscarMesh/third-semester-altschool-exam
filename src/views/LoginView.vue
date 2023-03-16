@@ -1,0 +1,100 @@
+<template>
+  <main class="mt-10 flex flex-row justify-between items-center">
+    <div class="flex flex-col w-full">
+      <h1 class="text-[30px] text-black font-bold mb-5">
+        Welcome Back, <span class="text-green-600"> Sign In </span>
+      </h1>
+      <!-- form  -->
+      <form @submit="onLogin()" class="flex flex-col gap-5">
+        <div class="flex flex-col gap-5">
+          <label class="text-black text-[16px] font-semibold"> Email </label>
+          <input
+            type="email"
+            v-model="email"
+            required
+            placeholder="oscarmesh123@gmail.com"
+            class="p-5 border border-green-600 text-[16px] text-black w-full"
+          />
+        </div>
+        <div v-if="errors.email">
+          <p class="text-red-600">{{ errors.email }}</p>
+        </div>
+        <div class="flex flex-col gap-5">
+          <label class="text-black text-[16px] font-semibold"> Password </label>
+          <input
+            type="password"
+            v-model="password"
+            placeholder="**********"
+            required
+            class="p-5 border border-green-600 text-[16px] text-black w-full"
+          />
+        </div>
+        <div v-if="errors.password">
+          <p class="text-red-600">{{ errors.password }}</p>
+        </div>
+        <button
+          type="submit"
+          class="p-5 bg-green-600 border text-white text-[16px] font-semibold hover:bg-opacity-0 hover:border-green-600 hover:text-green-600"
+        >
+          Sign In
+        </button>
+      </form>
+      <!-- form  -->
+      <p class="text-gray-600 mt-5">
+        Don't have an account?
+        <RouterLink to="/register" class="text-green-600 hover:font-bold">
+          Sign Up
+        </RouterLink>
+      </p>
+    </div>
+    <img src="../assets/mobile.png" class="w-[600px] h-[600px] cover" />
+  </main>
+</template>
+
+<script>
+import { RouterLink, RouterView } from "vue-router";
+import SignupValidations from "../utils/SignupValidations";
+import { useToast } from "vue-toastification";
+
+export default {
+  name: "login",
+  components: {
+    RouterLink,
+    RouterView,
+  },
+  data() {
+    return {
+      email: "",
+      password: "",
+      errors: [],
+      user: [],
+    };
+  },
+  methods: {
+    onLogin() {
+      let validations = new SignupValidations(this.email, this.password);
+      this.errors = validations.checkValidations();
+      if (this.errors.length) {
+        return false;
+      }
+      const toast = useToast();
+      if (
+        this.email === this.user.email &&
+        this.password === this.user.password
+      ) {
+        this.$store.dispatch("auth/login", true);
+        toast.success("Login Successful");
+        this.$router.push("/products");
+      } else {
+        toast.error("Invalid Credentials");
+      }
+    },
+  },
+  mounted() {
+    var user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      this.user = user;
+    }
+  },
+};
+</script>
