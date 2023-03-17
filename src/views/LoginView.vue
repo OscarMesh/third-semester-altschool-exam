@@ -91,8 +91,8 @@ export default {
         this.password === this.user.password
       ) {
         this.$store.commit("auth/login");
-        location.reload();
         this.$router.push("/products");
+        location.reload();
         toast.success("Login Successful");
       } else {
         toast.error("Invalid Credentials");
