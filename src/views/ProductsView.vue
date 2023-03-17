@@ -50,6 +50,14 @@ export default {
     ProductCard,
   },
   computed: {
+    beforeRouteEnter(to, from, next) {
+      const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
+      if (isLoggedIn === false) {
+        next({ name: "login" });
+      } else {
+        next();
+      }
+    },
     ...mapState("auth", {
       user: (state) => state.user.username,
     }),
@@ -65,6 +73,7 @@ export default {
   mounted() {
     console.log(this.user);
     this.$store.dispatch("products/getProducts");
+    console.log(localStorage.getItem("isLoggedIn"));
   },
 };
 </script>

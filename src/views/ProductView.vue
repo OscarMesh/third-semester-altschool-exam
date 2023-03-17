@@ -90,6 +90,7 @@ export default {
   },
   mounted() {
     console.log(this.$route.params.id);
+   
     this.fetchProduct();
   },
 };

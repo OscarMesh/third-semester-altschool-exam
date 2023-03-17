@@ -47,10 +47,6 @@ export default {
   components: {
     Vue3Lottie,
   },
-  methods: {
-    onProducts() {
-      this.$router.push("/products");
-    },
-  },
+  methods: {},
 };
 </script>

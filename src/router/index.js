@@ -59,13 +59,13 @@ const routes = [
     ],
   },
   {
-    path: "/:pathMatch(.*)*",
+    path: "/:catchAll(.*)",
     name: "error-page",
     component: ErrorView,
   },
 ];
 const router = createRouter({ history: createWebHistory(), routes });
-var isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
+const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
 console.log(isLoggedIn);
 router.beforeEach((to, from, next) => {
   if (
