@@ -7,7 +7,7 @@
         Welcome Back, <span class="text-green-600"> Sign In </span>
       </h1>
       <!-- form  -->
-      <form @submit="onLogin()" class="flex flex-col gap-5">
+      <form @submit.prevent="onLogin()" class="flex flex-col gap-5">
         <div class="flex flex-col gap-5">
           <label class="text-black text-[16px] font-semibold"> Email </label>
           <input
