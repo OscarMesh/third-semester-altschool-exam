@@ -19,7 +19,7 @@
         </p>
 
         <button
-          class="md:p-5 p-3 font-bold cursor-pointer border text-white bg-green-600 hover:bg-opacity-0 hover:border-green-600 hover:text-green-600"
+          class="p-5 font-bold cursor-pointer border text-white bg-green-600 hover:bg-opacity-0 hover:border-green-600 hover:text-green-600"
         >
           <RouterLink to="/products"> View Products</RouterLink>
         </button>
