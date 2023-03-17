@@ -1,12 +1,12 @@
 <template>
-  <div class="m-auto h-[100%] max-w-[1100px] font-raleway">
+  <div class="m-auto max-w-[1100px] font-raleway">
     <NavComponent />
     <hr />
     <RouterView />
-    <p class="text-center text-gray-600 bottom-0">
-      @oscarMesh AltSchool 3rd semester exam 2023
-    </p>
   </div>
+  <p class="text-center h-[100%] text-gray-600 bottom-0">
+    @oscarMesh AltSchool 3rd semester exam 2023
+  </p>
 </template>
 
 <script>

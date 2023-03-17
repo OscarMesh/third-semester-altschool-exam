@@ -1,5 +1,7 @@
 <template>
-  <main class="mt-10 flex flex-row justify-between items-center">
+  <main
+    class="mt-10 flex flex-col h-[100vh] md:flex-row p-5 md:p-3 justify-between items-cente"
+  >
     <div class="flex flex-col w-full">
       <h1 class="text-[30px] text-black font-bold mb-5">
         Welcome, <span class="text-green-600"> Sign Up</span>
@@ -60,7 +62,10 @@
         </RouterLink>
       </p>
     </div>
-    <img src="../assets/signup.png" class="w-[600px] h-[600px] cover" />
+    <img
+      src="../assets/signup.png"
+      class="object-cover w-[500px] h-[500px] cover hidden md:flex"
+    />
   </main>
 </template>
 

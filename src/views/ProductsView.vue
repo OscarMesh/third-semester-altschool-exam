@@ -1,5 +1,5 @@
 <template>
-  <div class="h-[100%] mt-4">
+  <div class="h-[100%] mt-4 relative">
     <div class="flex flex-row gap-5 mb-9 px-3 md:px-0">
       <font-awesome-icon
         icon="fa-solid fa-user-secret"
@@ -16,12 +16,22 @@
     </div>
 
     <div
+      v-if="loading"
+      class="flex justify-center m-auto h-[100vh] items-center"
+    >
+      <p class="text-center">Loading...</p>
+    </div>
+    <div
+      v-else
       class="flex flex-col md:p-6 lg:p-0 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 items-center justify-center mb-6"
     >
-      <div v-if="loading">
-        <p>Loading...</p>
-      </div>
-      <div v-else v-for="product in products" :key="product.id">
+      <div
+        @click="
+          () => $router.push({ name: 'product', params: { id: product.id } })
+        "
+        v-for="product in products"
+        :key="product.id"
+      >
         <ProductCard :product="product" />
       </div>
     </div>
@@ -44,7 +54,7 @@ export default {
       user: (state) => state.user.username,
     }),
     ...mapState("products", {
-      loading: (state) => state.products.isLoading,
+      loading: (state) => state.isLoading,
       products: (state) => state.products.products,
     }),
   },

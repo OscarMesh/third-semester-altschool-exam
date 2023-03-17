@@ -4,6 +4,8 @@ import LoginView from "../views/LoginView.vue";
 import RegisterView from "../views/RegisterView.vue";
 import ProductsView from "../views/ProductsView.vue";
 import ProductView from "../views/ProductView.vue";
+import ProductImages from "../components/ProductImages.vue";
+import ErrorView from "../views/ErrorView.vue";
 
 const routes = [
   {
@@ -39,13 +41,27 @@ const routes = [
     },
   },
   {
-    path: "/products/:productId",
+    path: "/products/:id",
     name: "product",
     component: ProductView,
     meta: {
       title: "Product",
       authIsRequired: true,
     },
+    children: [
+      {
+        // nested routes
+        path: "images/:id",
+        component: ProductImages,
+        name: "product-images",
+        props: true,
+      },
+    ],
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "error-page",
+    component: ErrorView,
   },
 ];
 const router = createRouter({ history: createWebHistory(), routes });

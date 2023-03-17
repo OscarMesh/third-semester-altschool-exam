@@ -1,8 +1,10 @@
 <template>
-  <main>
-    <div class="flex flex-row justify-between items-center mt-10">
+  <main class="h-[100vh]">
+    <div
+      class="flex flex-col md:flex-row justify-between items-center mt-10 p-5 md:p-2 lg:p-0"
+    >
       <div class="flex flex-col gap-7 max-w-[500px]">
-        <h2 class="text-black font-bold text-[30px]">
+        <h2 class="text-black font-bold text-[20px] md:text-[30px]">
           AltSchool
           <span class="underline text-green-600"> Frontend Engineering </span>
           Challenge
@@ -17,12 +19,12 @@
         </p>
 
         <button
-          class="p-5 font-bold cursor-pointer border text-white bg-green-600 hover:bg-opacity-0 hover:border-green-600 hover:text-green-600"
+          class="md:p-5 p-3 font-bold cursor-pointer border text-white bg-green-600 hover:bg-opacity-0 hover:border-green-600 hover:text-green-600"
         >
           <RouterLink to="/products"> View Products</RouterLink>
         </button>
       </div>
-      <div>
+      <div class="w-[200px] md:w-[100%]">
         <Vue3Lottie :animationData="FlyingMan" />
       </div>
     </div>

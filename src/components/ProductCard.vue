@@ -1,9 +1,12 @@
 <template>
   <div
-    @click="$router.push(`/products/${product.id}`)"
     class="bg-[#fbfbfb] h-[100%] w-[250px] overflow-hidden cursor-pointer hover:shadow-2xl"
   >
-    <img :src="product.thumbnail" alt="" class="h-[200px] w-full cover" />
+    <img
+      :src="product.thumbnail"
+      alt=""
+      class="h-[200px] w-full object-cover hover:scale-110 transition duration-300 ease-in-out"
+    />
     <div class="p-6 flex flex-col gap-2">
       <div class="flex flex-row justify-between items-center">
         <h1 class="text-black text-[18px] font-semibold">
@@ -23,7 +26,7 @@
       <div class="flex flex-row items-center gap-2">
         <font-awesome-icon
           icon="fa-solid fa-star"
-          class="text-yellow-400 text-[16px] font-bold"
+          class="text-green-600 text-[16px] font-bold"
         />
         <p class="font-bold">
           {{ product.rating }}
