@@ -41,6 +41,7 @@ export default {
     logout(state) {
       state.isLoggedIn = false;
       localStorage.setItem("isLoggedIn", false);
+      
     },
   },
   actions: {
