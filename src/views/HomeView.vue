@@ -1,4 +1,5 @@
 <template>
+  <!-- <NavComponent /> -->
   <main class="h-[100vh]">
     <div
       class="flex flex-col md:flex-row justify-between items-center mt-10 p-5 md:p-2 lg:p-0"
@@ -18,11 +19,11 @@
           ‘/products’.
         </p>
 
-        <button
+        <!-- <button
           class="p-5 font-bold cursor-pointer border text-white bg-green-600 hover:bg-opacity-0 hover:border-green-600 hover:text-green-600"
         >
           <RouterLink to="/products"> View Products</RouterLink>
-        </button>
+        </button> -->
       </div>
       <div class="w-[200px] md:w-[100%]">
         <Vue3Lottie :animationData="FlyingMan" />
@@ -34,6 +35,7 @@
 <script>
 import { Vue3Lottie } from "vue3-lottie";
 import { RouterLink } from "vue-router";
+// import NavComponent from "../components/NavComponent.vue";
 import "vue3-lottie/dist/style.css";
 import FlyingMan from "../assets/flyingman.json";
 
@@ -46,6 +48,8 @@ export default {
   },
   components: {
     Vue3Lottie,
+    RouterLink,
+    // NavComponent,
   },
   methods: {},
 };

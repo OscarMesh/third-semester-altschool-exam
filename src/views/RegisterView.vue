@@ -1,4 +1,5 @@
 <template>
+  <!-- <NavComponent /> -->
   <main
     class="mt-10 flex flex-col h-[100vh] md:flex-row p-5 md:p-3 justify-between items-cente"
   >
@@ -74,11 +75,13 @@ import { mapActions } from "vuex";
 import { RouterLink, RouterView } from "vue-router";
 import SignupValidations from "../utils/SignupValidations";
 import { useToast } from "vue-toastification";
+import NavComponent from "../components/NavComponent.vue";
 export default {
   name: "RegisterView",
   components: {
     RouterLink,
     RouterView,
+    // NavComponent,
   },
   data() {
     return {

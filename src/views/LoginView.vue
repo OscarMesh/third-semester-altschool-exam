@@ -1,4 +1,5 @@
 <template>
+  <!-- <NavComponent /> -->
   <main
     class="mt-10 flex flex-col h-[100vh] md:flex-row p-5 md:p-3 justify-between items-center"
   >
@@ -7,7 +8,7 @@
         Welcome Back, <span class="text-green-600"> Sign In </span>
       </h1>
       <!-- form  -->
-      <form @submit.prevent="onLogin()" class="flex flex-col gap-5">
+      <form @submit.prevent="onLogin" class="flex flex-col gap-5">
         <div class="flex flex-col gap-5">
           <label class="text-black text-[16px] font-semibold"> Email </label>
           <input
@@ -60,12 +61,14 @@
 import { RouterLink, RouterView } from "vue-router";
 import SignupValidations from "../utils/SignupValidations";
 import { useToast } from "vue-toastification";
+// import NavComponent from "../components/NavComponent.vue";
 
 export default {
   name: "login",
   components: {
     RouterLink,
     RouterView,
+    // NavComponent,
   },
   data() {
     return {
@@ -78,18 +81,19 @@ export default {
   methods: {
     onLogin() {
       let validations = new SignupValidations(this.email, this.password);
+      const toast = useToast();
       this.errors = validations.checkValidations();
       if (this.errors.length) {
         return false;
       }
-      const toast = useToast();
       if (
         this.email === this.user.email &&
         this.password === this.user.password
       ) {
-        this.$store.dispatch("auth/login", true);
-        toast.success("Login Successful");
+        this.$store.commit("auth/login");
+        location.reload();
         this.$router.push("/products");
+        toast.success("Login Successful");
       } else {
         toast.error("Invalid Credentials");
       }
@@ -97,9 +101,7 @@ export default {
   },
   mounted() {
     var user = JSON.parse(localStorage.getItem("user"));
-    if (user) {
-      this.user = user;
-    }
+    this.user = user;
   },
 };
 </script>

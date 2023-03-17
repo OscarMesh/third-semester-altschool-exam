@@ -15,13 +15,16 @@ export default {
       state.user = user;
       localStorage.setItem("user", JSON.stringify(user));
     },
-    login(state, status) {
-      state.isLoggedIn = status;
-      localStorage.setItem("isLoggedIn", JSON.parse(status));
+    login(state) {
+      state.isLoggedIn = true;
+      localStorage.setItem("isLoggedIn", JSON.stringify(state.isLoggedIn))
     },
     intializeState(state) {
-      if (localStorage.getItem("isLoggedIn") && localStorage.getItem("user")) {
-        state.isLoggedIn = localStorage.getItem("isLoggedIn");
+      if (
+        JSON.parse(localStorage.getItem("isLoggedIn")) &&
+        localStorage.getItem("user")
+      ) {
+        state.isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
         state.user = JSON.parse(localStorage.getItem("user"));
       }
     },
@@ -37,12 +40,8 @@ export default {
     },
     logout(state) {
       state.isLoggedIn = false;
-      localStorage.setItem("isLoggedIn", false);
-      state.user = {
-        username: "",
-        email: "",
-        password: "",
-      };
+      JSON.parse(localStorage.setItem("isLoggedIn", false));
+      
     },
   },
   actions: {

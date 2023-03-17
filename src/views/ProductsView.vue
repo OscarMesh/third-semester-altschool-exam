@@ -1,4 +1,5 @@
 <template>
+  <!-- <NavComponent /> -->
   <div class="h-[100%] mt-4 relative">
     <div class="flex flex-row gap-5 mb-9 px-3 md:px-0">
       <font-awesome-icon
@@ -42,22 +43,24 @@
 import { mapState } from "vuex";
 import { RouterLink, RouterView } from "vue-router";
 import ProductCard from "../components/ProductCard.vue";
+import NavComponent from "../components/NavComponent.vue";
 export default {
   name: "products",
   components: {
     RouterLink,
     RouterView,
     ProductCard,
+    // NavComponent,
   },
   computed: {
-    beforeRouteEnter(to, from, next) {
-      const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
-      if (isLoggedIn === false) {
-        next({ name: "login" });
-      } else {
-        next();
-      }
-    },
+    // beforeRouteEnter(to, from, next) {
+    //   const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
+    //   if (isLoggedIn === false) {
+    //     next({ name: "login" });
+    //   } else {
+    //     next();
+    //   }
+    // },
     ...mapState("auth", {
       user: (state) => state.user.username,
     }),
