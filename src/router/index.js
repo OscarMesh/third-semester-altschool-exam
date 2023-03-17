@@ -66,18 +66,17 @@ const routes = [
 ];
 const router = createRouter({ history: createWebHistory(), routes });
 var isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
-console.log(isLoggedIn);
 router.beforeEach((to, from, next) => {
   if (
     "authIsRequired" in to.meta &&
     to.meta.authIsRequired &&
-    isLoggedIn == false
+    isLoggedIn !== true
   ) {
     next("/login");
   } else if (
     "authIsRequired" in to.meta &&
     !to.meta.authIsRequired &&
-    isLoggedIn == true
+    isLoggedIn === true
   ) {
     next("/products");
   } else {

@@ -19,11 +19,12 @@
           ‘/products’.
         </p>
 
-        <!-- <button
-          class="p-5 font-bold cursor-pointer border text-white bg-green-600 hover:bg-opacity-0 hover:border-green-600 hover:text-green-600"
+        <router-link
+          to="/login"
+          class="p-5 font-bold cursor-pointer border text-white text-center bg-green-600 hover:bg-opacity-0 hover:border-green-600 hover:text-green-600"
         >
-          <RouterLink to="/products"> View Products</RouterLink>
-        </button> -->
+          View Products
+        </router-link>
       </div>
       <div class="w-[200px] md:w-[100%]">
         <Vue3Lottie :animationData="FlyingMan" />
@@ -49,8 +50,7 @@ export default {
   components: {
     Vue3Lottie,
     RouterLink,
-    // NavComponent,
+    // router,
   },
-  methods: {},
 };
 </script>

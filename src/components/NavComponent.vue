@@ -23,18 +23,18 @@
         @click="onLogout()"
         class="p-2 border text-green-600 cursor-pointer border-green-600 hover:bg-green-600 hover:text-white"
       >
-        <a href="/">Logout</a>
+        <p>Logout</p>
       </li>
       <li
         class="p-2 cursor-pointer border text-white bg-green-600 hover:bg-opacity-0 hover:border-green-600 hover:text-green-600"
       >
-        <RouterLink to="/register">Register</RouterLink>
+        <router-link to="/register">Register</router-link>
       </li>
       <li
         v-if="isLoggedIn == true"
         class="p-2 cursor-pointer border text-white bg-green-600 hover:bg-opacity-0 hover:border-green-600 hover:text-green-600"
       >
-        <RouterLink to="/products">Products</RouterLink>
+        <router-link to="/products">Products</router-link>
       </li>
     </ul>
   </nav>
@@ -42,16 +42,21 @@
 
 <script>
 import { mapState } from "vuex";
+import { RouterLink } from "vue-router";
 import { useToast } from "vue-toastification";
 
 export default {
   name: "NavComponent",
+  components: {
+    RouterLink,
+  },
   data() {},
   methods: {
     onLogout() {
       const toast = useToast();
       this.$store.commit("auth/logout");
       this.$router.push("/login");
+      location.reload();
       toast.success("Logout Successful");
     },
   },

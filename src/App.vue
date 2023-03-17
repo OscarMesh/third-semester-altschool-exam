@@ -2,7 +2,7 @@
   <div class="m-auto max-w-[1100px] font-raleway">
     <NavComponent />
     <hr />
-    <RouterView />
+    <router-view></router-view>
   </div>
   <p class="text-center h-[100%] text-gray-600 bottom-0">
     @oscarMesh AltSchool 3rd semester exam 2023

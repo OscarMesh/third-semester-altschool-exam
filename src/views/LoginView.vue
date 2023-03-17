@@ -1,7 +1,7 @@
 <template>
   <!-- <NavComponent /> -->
   <main
-    class="mt-10 flex flex-col h-[100vh] md:flex-row p-5 md:p-3 justify-between items-center"
+    class="mt-10 md:mt-0 flex flex-col h-[100vh] md:flex-row p-5 md:p-3 justify-between items-center"
   >
     <div class="flex flex-col max-w-[500px] w-full :">
       <h1 class="text-[30px] text-black font-bold mb-5">
@@ -100,8 +100,9 @@ export default {
     },
   },
   mounted() {
-    var user = JSON.parse(localStorage.getItem("user"));
-    this.user = user;
+    if (localStorage.getItem("user")) {
+      this.user = JSON.parse(localStorage.getItem("user"));
+    }
   },
 };
 </script>

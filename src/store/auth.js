@@ -17,7 +17,7 @@ export default {
     },
     login(state) {
       state.isLoggedIn = true;
-      localStorage.setItem("isLoggedIn", JSON.stringify(state.isLoggedIn))
+      localStorage.setItem("isLoggedIn", JSON.stringify(state.isLoggedIn));
     },
     intializeState(state) {
       if (
@@ -40,8 +40,7 @@ export default {
     },
     logout(state) {
       state.isLoggedIn = false;
-      JSON.parse(localStorage.setItem("isLoggedIn", false));
-      
+      localStorage.setItem("isLoggedIn", false);
     },
   },
   actions: {
@@ -49,5 +48,9 @@ export default {
       commit("login", status);
     },
   },
-  getters: {},
+  getters: {
+    isLoggedIn(state) {
+      return state.isLoggedIn;
+    },
+  },
 };

@@ -43,7 +43,7 @@
 import { mapState } from "vuex";
 import { RouterLink, RouterView } from "vue-router";
 import ProductCard from "../components/ProductCard.vue";
-import NavComponent from "../components/NavComponent.vue";
+// import NavComponent from "../components/NavComponent.vue";
 export default {
   name: "products",
   components: {
@@ -53,9 +53,9 @@ export default {
     // NavComponent,
   },
   computed: {
-    // beforeRouteEnter(to, from, next) {
+    // beforeEnter(to, from, next) {
     //   const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
-    //   if (isLoggedIn === false) {
+    //   if (isLoggedIn == false) {
     //     next({ name: "login" });
     //   } else {
     //     next();
@@ -76,7 +76,7 @@ export default {
   mounted() {
     console.log(this.user);
     this.$store.dispatch("products/getProducts");
-    console.log(localStorage.getItem("isLoggedIn"));
+    console.log(this.$store.state.auth.isLoggedIn);
   },
 };
 </script>
