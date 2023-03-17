@@ -1,5 +1,5 @@
 <template>
-  <div class="m-auto h-[100vh] max-w-[1100px] font-raleway">
+  <div class="m-auto h-[100%] max-w-[1100px] font-raleway">
     <NavComponent />
     <hr />
     <RouterView />

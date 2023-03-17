@@ -1,10 +1,14 @@
 <template>
   <nav class="flex flex-row items-center w-full justify-between p-4">
-    <div>
+    <div class="flex flex-row gap-1">
       <h1 class="font-bold text-green-600 tracking-wider text-[18px]">
-        <RouterLink to="/">OscarMesh</RouterLink>
+        <font-awesome-icon icon="fa-solid fa-code" />
       </h1>
-      <span></span>
+      <h1 class="font-bold tracking-wider text-[18px]">
+        <RouterLink to="/"
+          >Oscar<span class="text-green-600">Mesh</span>
+        </RouterLink>
+      </h1>
     </div>
 
     <ul class="flex flex-row justify-between items-center gap-3">
