@@ -17,7 +17,7 @@ export default {
     },
     login(state) {
       state.isLoggedIn = true;
-      localStorage.setItem("isLoggedIn", JSON.stringify(state.isLoggedIn));
+      localStorage.setItem("isLoggedIn", true);
     },
     intializeState(state) {
       if (
@@ -25,23 +25,23 @@ export default {
         localStorage.getItem("user")
       ) {
         state.isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
-        state.user = JSON.parse(localStorage.getItem("user"));
+        state.user = localStorage.getItem("user");
       }
     },
+    logout(state) {
+      state.isLoggedIn = false;
+      localStorage.setItem("isLoggedIn", false);
+      location.href = "/login";
+    },
     clearUser(state) {
+      state.isLoggedIn = false;
+      localStorage.setItem("isLoggedIn", false);
       state.user = {
         username: "",
         email: "",
         password: "",
       };
-      state.isLoggedIn = false;
-      localStorage.setItem("isLoggedIn", false);
-      localStorage.setItem("user", JSON.stringify(state.user));
-    },
-    logout(state) {
-      state.isLoggedIn = false;
-      localStorage.setItem("isLoggedIn", false);
-      
+      localStorage.setItem("user", state.user);
     },
   },
   actions: {

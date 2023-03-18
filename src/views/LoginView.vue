@@ -99,10 +99,9 @@ export default {
       }
     },
   },
-  mounted() {
-    if (localStorage.getItem("user")) {
-      this.user = JSON.parse(localStorage.getItem("user"));
-    }
+  created() {
+    this.user = JSON.parse(localStorage.getItem("user"));
+    console.log(this.user);
   },
 };
 </script>

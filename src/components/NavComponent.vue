@@ -31,7 +31,7 @@
         <router-link to="/register">Register</router-link>
       </li>
       <li
-        v-if="isLoggedIn === true"
+        v-if="isLoggedIn == true"
         class="p-2 cursor-pointer border text-white bg-green-600 hover:bg-opacity-0 hover:border-green-600 hover:text-green-600"
       >
         <router-link to="/products">Products</router-link>
@@ -44,23 +44,27 @@
 import { mapState } from "vuex";
 import { RouterLink } from "vue-router";
 import { useToast } from "vue-toastification";
-
 export default {
   name: "NavComponent",
-  data() {},
+  data() {
+    return {};
+  },
   methods: {
     onLogout() {
       const toast = useToast();
       this.$store.commit("auth/logout");
-      this.$router.push("/");
+
       toast.success("Logout Successful");
-      location.reload();
     },
+  },
+  components: {
+    RouterLink,
   },
   computed: {
     ...mapState("auth", {
       isLoggedIn: (state) => state.isLoggedIn,
     }),
   },
+  mounted() {},
 };
 </script>

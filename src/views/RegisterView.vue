@@ -75,7 +75,6 @@ import { mapActions } from "vuex";
 import { RouterLink, RouterView } from "vue-router";
 import SignupValidations from "../utils/SignupValidations";
 import { useToast } from "vue-toastification";
-import NavComponent from "../components/NavComponent.vue";
 export default {
   name: "RegisterView",
   components: {

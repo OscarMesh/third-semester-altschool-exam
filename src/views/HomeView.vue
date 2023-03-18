@@ -52,5 +52,8 @@ export default {
     RouterLink,
     // router,
   },
+  mounted() {
+    this.$store.commit("auth/intializeState");
+  },
 };
 </script>
