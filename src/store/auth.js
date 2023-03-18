@@ -18,6 +18,7 @@ export default {
     login(state) {
       state.isLoggedIn = true;
       localStorage.setItem("isLoggedIn", true);
+      location.href = "/products";
     },
     intializeState(state) {
       if (
@@ -31,7 +32,7 @@ export default {
     logout(state) {
       state.isLoggedIn = false;
       localStorage.setItem("isLoggedIn", false);
-      location.href = "/login";
+      location.href = "/";
     },
     clearUser(state) {
       state.isLoggedIn = false;
