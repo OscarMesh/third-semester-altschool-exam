@@ -31,11 +31,6 @@
       >
         <router-link to="/register">Register</router-link>
       </li>
-      <li
-        class="p-2 cursor-pointer border text-white bg-green-600 hover:bg-opacity-0 hover:border-green-600 hover:text-green-600"
-      >
-        <router-link to="/products">Products</router-link>
-      </li>
     </ul>
   </nav>
 </template>
