@@ -13,25 +13,25 @@
 
     <ul class="flex flex-row justify-between items-center gap-3">
       <li
-        v-if="isLoggedIn !== true"
+        v-if="!isLoggedIn"
         class="p-2 border text-green-600 cursor-pointer border-green-600 hover:bg-green-600 hover:text-white"
       >
         <RouterLink to="/login">Login</RouterLink>
       </li>
       <li
-        v-if="isLoggedIn === true"
-        @click="onLogout()"
+        v-if="isLoggedIn"
+        @click="onLogout"
         class="p-2 border text-green-600 cursor-pointer border-green-600 hover:bg-green-600 hover:text-white"
       >
         <p>Logout</p>
       </li>
       <li
+        v-if="!isLoggedIn"
         class="p-2 cursor-pointer border text-white bg-green-600 hover:bg-opacity-0 hover:border-green-600 hover:text-green-600"
       >
         <router-link to="/register">Register</router-link>
       </li>
       <li
-        v-if="isLoggedIn == true"
         class="p-2 cursor-pointer border text-white bg-green-600 hover:bg-opacity-0 hover:border-green-600 hover:text-green-600"
       >
         <router-link to="/products">Products</router-link>
@@ -41,30 +41,25 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+// import { mapState } from "vuex";
 import { RouterLink } from "vue-router";
-import { useToast } from "vue-toastification";
 export default {
   name: "NavComponent",
   data() {
     return {};
   },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters["auth/isAuthenticated"];
+    },
+  },
   methods: {
     onLogout() {
-      const toast = useToast();
-      this.$store.commit("auth/logout");
-
-      toast.success("Logout Successful");
+      this.$store.dispatch("auth/logout");
     },
   },
   components: {
     RouterLink,
   },
-  computed: {
-    ...mapState("auth", {
-      isLoggedIn: (state) => state.isLoggedIn,
-    }),
-  },
-  mounted() {},
 };
 </script>

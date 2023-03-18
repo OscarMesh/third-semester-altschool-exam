@@ -20,7 +20,7 @@ export default {
     NavComponent,
   },
   mounted() {
-    this.$store.commit("auth/intializeState");
+    this.$store.getters["auth/isAuthenticated"];
   },
 };
 </script>

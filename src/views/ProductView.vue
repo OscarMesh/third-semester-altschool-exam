@@ -68,6 +68,7 @@ import { RouterView, useRoute, useRouter } from "vue-router";
 import axios from "axios";
 export default {
   name: "product",
+
   data() {
     return {
       product: {},

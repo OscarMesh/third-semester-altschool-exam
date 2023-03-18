@@ -3,7 +3,7 @@
   <main
     class="mt-10 flex flex-col h-[100vh] md:flex-row p-5 md:p-3 justify-between items-cente"
   >
-    <div class="flex flex-col w-full">
+    <div class="flex flex-col max-w-[500px] w-full">
       <h1 class="text-[30px] text-black font-bold mb-5">
         Welcome, <span class="text-green-600"> Sign Up</span>
       </h1>
@@ -92,7 +92,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      register: "auth/register",
+      // register: "auth/register",
     }),
     onRegister() {
       const toast = useToast();
@@ -105,13 +105,11 @@ export default {
       if (this.errors.length) {
         return false;
       }
-      this.$store.commit("auth/register", {
+      this.$store.dispatch("auth/signup", {
         email: this.email,
         password: this.password,
         username: this.username,
       });
-      toast.success("You have successfully registered");
-      this.$router.push("/login");
     },
   },
   mounted() {

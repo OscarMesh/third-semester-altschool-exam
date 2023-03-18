@@ -10,7 +10,9 @@
       <div class="flex flex-col">
         <h1 class="text-black text-[18px] font-bold">
           Welcome
-          <span class="text-green-600"> {{ user }}</span>
+          <span class="text-green-600">
+            {{ user.username }}
+          </span>
         </h1>
         <h2 class="font-medium">These are your available products</h2>
       </div>
@@ -43,6 +45,7 @@
 import { mapState } from "vuex";
 import { RouterLink, RouterView } from "vue-router";
 import ProductCard from "../components/ProductCard.vue";
+import authenTicatedUser from "../composables/authenTicatedUser";
 // import NavComponent from "../components/NavComponent.vue";
 export default {
   name: "products",
@@ -53,17 +56,12 @@ export default {
     // NavComponent,
   },
   computed: {
-    // beforeEnter(to, from, next) {
-    //   const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
-    //   if (isLoggedIn == false) {
-    //     next({ name: "login" });
-    //   } else {
-    //     next();
-    //   }
-    // },
-    ...mapState("auth", {
-      user: (state) => state.user.username,
-    }),
+    // ...mapState("auth", {
+    //   user: (state) => JSON.parse(state.user).username,
+    // }),
+    user() {
+      return this.$store.getters["auth/user"];
+    },
     ...mapState("products", {
       loading: (state) => state.isLoading,
       products: (state) => state.products.products,
@@ -74,9 +72,8 @@ export default {
   },
   methods: {},
   mounted() {
-    console.log(this.user);
     this.$store.dispatch("products/getProducts");
-    console.log(this.$store.state.auth.isLoggedIn);
+    console.log(this.$store.getters["auth/user"]);
   },
 };
 </script>

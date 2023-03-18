@@ -6,6 +6,7 @@ import ProductsView from "../views/ProductsView.vue";
 import ProductView from "../views/ProductView.vue";
 import ProductImages from "../components/ProductImages.vue";
 import ErrorView from "../views/ErrorView.vue";
+import store from "../store/store";
 
 const routes = [
   {
@@ -65,23 +66,43 @@ const routes = [
   },
 ];
 const router = createRouter({ history: createWebHistory(), routes });
-var isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
+
 router.beforeEach((to, from, next) => {
-  if (
-    "authIsRequired" in to.meta &&
-    to.meta.authIsRequired &&
-    isLoggedIn !== true
-  ) {
+  const requiresAuth = to.matched.some((record) => record.meta.authIsRequired);
+  var isAuthenticated = store.getters["auth/isAuthenticated"];
+  console.log(isAuthenticated);
+  // const isAuthenticated = store.getters.isAuthenticated
+
+  if ("authIsRequired" in to.meta && requiresAuth && isAuthenticated !== true) {
     next("/login");
   } else if (
     "authIsRequired" in to.meta &&
-    !to.meta.authIsRequired &&
-    isLoggedIn === true
+    !requiresAuth &&
+    isAuthenticated === true
   ) {
     next("/products");
   } else {
     next();
   }
 });
+// router.beforeEach((to, from, next) => {
+//   if (
+//     "authIsRequired" in to.meta &&
+//     to.meta.authIsRequired &&
+//     isLoggedIn !== true
+//   ) {
+//     next("/login");
+//   } else if (
+//     "authIsRequired" in to.meta &&
+//     !to.meta.authIsRequired &&
+//     isLoggedIn === true
+//   ) {
+//     next("/products");
+//   } else {
+//     next();
+//   }
+// }
+
+// );
 
 export default router;
