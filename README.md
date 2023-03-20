@@ -27,3 +27,5 @@ npm run dev
 ```sh
 npm run build
 ```
+### Deployed link
+https://oscar-third-semester-altschool-exam.vercel.app/
