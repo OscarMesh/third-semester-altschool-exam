@@ -25,7 +25,9 @@ export default {
     async signup({ commit }, user) {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       commit("setUser", user);
-      toast.success("You have successfully registered");
+      toast.success("You have successfully registered", {
+        timeout: 2000,
+      });
       router.push("/login");
     },
     async login({ state, commit }, { email, password }) {
@@ -33,16 +35,22 @@ export default {
       const user = state.user;
       if (user && user.email === email && user.password === password) {
         commit("setIsAuthenticated", true);
-        toast.success("Login Successful");
+        toast.success("Login Successful", {
+          timeout: 2000,
+        });
         router.push("/products");
       } else {
-        toast.error("Invalid email or password");
+        toast.error("Invalid email or password", {
+          timeout: 2000,
+        });
       }
     },
     logout({ commit }) {
       commit("setIsAuthenticated", false);
       router.push("/login");
-      toast.success("Logout Successful");
+      toast.success("Logout Successful", {
+        timeout: 2000,
+      });
     },
   },
   getters: {

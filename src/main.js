@@ -35,6 +35,7 @@ app.use(store);
 app.use(Toast, {
   // You can set your default options here
   position: POSITION.TOP_LEFT,
+  
 });
 
 app.mount("#app");

@@ -3,7 +3,7 @@
   <main
     class="mt-10 md:mt-0 flex flex-col h-[100vh] md:flex-row p-5 md:p-3 justify-between items-center"
   >
-    <div class="flex flex-col max-w-[500px] w-full ">
+    <div class="flex flex-col max-w-[500px] w-full">
       <h1 class="text-[30px] text-black font-bold mb-5">
         Welcome Back, <span class="text-green-600"> Sign In </span>
       </h1>
@@ -77,6 +77,8 @@ export default {
       errors: [],
     };
   },
+  created() {
+  },
   methods: {
     onLogin() {
       let validations = new SignupValidations(this.email, this.password);
@@ -84,35 +86,13 @@ export default {
       this.errors = validations.checkValidations();
       if (this.errors.length) {
         return false;
-      }
-      
+      } else {
         this.$store.dispatch("auth/login", {
           email: this.email,
           password: this.password,
         });
-
-       
-      
-      // if (
-      //   this.email === this.user.email &&
-      //   this.password === this.user.password
-      // ) {
-      //   this.$store.commit("auth/login");
-      //   toast.success("Login Successful");
-      // } else {
-      //   toast.error("Invalid Credentials");
-      // }
+      }
     },
-    // getUser() {
-    //   this.user = JSON.parse(localStorage.getItem("user"));
-    // },
   },
-  // mounted() {
-  //   if (localStorage.getItem("user") === null) {
-  //     this.user = [];
-  //   } else {
-  //     this.getUser();
-  //   }
-  // },
 };
 </script>
